@@ -4,15 +4,16 @@ using System.Threading.Tasks;
 
 using MyContacts.BLL.Helpers;
 using MyContacts.BLL.Models;
-using MyContacts.DAL.DTO;
 
 using Xamarin.Forms;
+
+using Contact = MyContacts.BLL.Models.Contact;
 
 namespace MyContacts.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        MyContactsModel model;
+        public MyContactsModel model;
 
         public Command AddContactCommand => new Command(AddContactAction);
         public Command DeleteAllContactCommand => new Command(DeleteAllContactAction);

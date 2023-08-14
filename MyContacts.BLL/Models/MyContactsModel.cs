@@ -24,12 +24,25 @@ namespace MyContacts.BLL.Models
         }
         public void LoadContacts()
         {
-            Contacts = DataService.ContactsTable.GetItems();
+            var items = DataService.ContactsTable.GetItems();
+            Contacts = Mapping(items);
             Debug.WriteLine($"{Contacts.Count} contacts loaded");
         }
+
+        private ObservableCollection<Contact> Mapping(ObservableCollection<ContactDTO> items)
+        {
+            var contacts = new ObservableCollection<Contact>();
+            foreach (var item in items)
+            {
+                contacts.Add(new Contact() { Id = item.Id, FirstName = item.FirstName, LastName = item.LastName });
+            }
+
+            return contacts;
+        }
+
         public void AddContact()
         {
-            var newContact = new Contact() { FirstName = "123", LastName = "123" };
+            var newContact = new ContactDTO() { FirstName = "123", LastName = "123" };
             DataService.ContactsTable.UpdateInsertItem(newContact);
             LoadContacts();
         }

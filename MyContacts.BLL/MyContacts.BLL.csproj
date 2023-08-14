@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\BusinessLogicHelper.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\MyContactsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

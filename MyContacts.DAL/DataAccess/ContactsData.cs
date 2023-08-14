@@ -22,33 +22,33 @@ namespace MyContacts.DAL
             CreateTableResult createTableResult = CreateTableResult.Migrated;
             Task.Run(async () =>
             {
-                createTableResult = await connection.CreateTableAsync<Contact>();
+                createTableResult = await connection.CreateTableAsync<ContactDTO>();
             }).Wait();
 
             return createTableResult;
         }
 
-        public ObservableCollection<Contact> GetItems()
+        public ObservableCollection<ContactDTO> GetItems()
         {
-            List<Contact> list = new List<Contact>();
+            List<ContactDTO> list = new List<ContactDTO>();
             Task.Run(async () =>
             {
-                list = await connection.Table<Contact>().ToListAsync();
+                list = await connection.Table<ContactDTO>().ToListAsync();
             }).Wait();
 
-            return new ObservableCollection<Contact>(list);
+            return new ObservableCollection<ContactDTO>(list);
         }
-        public Contact GetItem(int id)
+        public ContactDTO GetItem(int id)
         {
-            Contact result = null;
+            ContactDTO result = null;
             Task.Run(async () =>
             {
-                result = await connection.GetAsync<Contact>(id);
+                result = await connection.GetAsync<ContactDTO>(id);
             }).Wait();
 
             return result;
         }
-        public int DeleteItem(Contact item)
+        public int DeleteItem(ContactDTO item)
         {
             int result = 0;
             Task.Run(async () =>
@@ -63,12 +63,12 @@ namespace MyContacts.DAL
             int result = 0;
             Task.Run(async () =>
             {
-                result = await connection.DeleteAllAsync<Contact>();
+                result = await connection.DeleteAllAsync<ContactDTO>();
             }).Wait();
 
             return result;
         }
-        public int UpdateInsertItem(Contact item)
+        public int UpdateInsertItem(ContactDTO item)
         {
             int result = 0;
             Task.Run(async () =>

@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MyContacts.DAL.Interfaces;
 
-using MyContacts.DAL.Interfaces;
-
-namespace MyContacts.DAL.DTO
+namespace MyContacts.BLL.Models
 {
     public class Contact : IContactDTO
     {
-        [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
